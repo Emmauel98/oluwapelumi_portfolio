@@ -181,7 +181,6 @@ const NicheSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Optional: Floating particles background effect */}
         <div className="fixed inset-0 pointer-events-none -z-10">
           {[...Array(20)].map((_, i) => (
             <motion.div

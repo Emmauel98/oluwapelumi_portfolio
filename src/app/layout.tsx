@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     images: ["https://yourdomain.com/og-image.jpg"],
   },
   icons: {
-    icon: "/ola.ico",
+    icon: "/favicon.ico",
   },
 };
 
@@ -65,12 +65,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
         <head>
           <StructuredDataCom />
         </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         {children}
       </body>
     </html>
