@@ -1,7 +1,8 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useTheme } from "@/components/ThemeProvider";
 
 // Types
 interface AboutCardProps {
@@ -14,17 +15,33 @@ interface AboutCardProps {
 }
 
 // About Card Component
-const AboutCard = ({ name, title, description, location, availability, imageUrl }: AboutCardProps)=> {
+const AboutCard = ({
+  name,
+  title,
+  description,
+  location,
+  availability,
+  imageUrl,
+}: AboutCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+  const { isDarkMode } = useTheme();
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
   const mouseXSpring = useSpring(x, { stiffness: 100, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 100, damping: 20 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7.5deg", "-7.5deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7.5deg", "7.5deg"]);
+  const rotateX = useTransform(
+    mouseYSpring,
+    [-0.5, 0.5],
+    ["7.5deg", "-7.5deg"]
+  );
+  const rotateY = useTransform(
+    mouseXSpring,
+    [-0.5, 0.5],
+    ["-7.5deg", "7.5deg"]
+  );
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -57,7 +74,13 @@ const AboutCard = ({ name, title, description, location, availability, imageUrl 
       className="relative w-full max-w-5xl mx-auto perspective-1000"
     >
       <motion.article
-        className="relative bg-gradient-to-br from-gray-900/90 to-black/90 rounded-2xl lg:rounded-3xl p-8 md:p-12 lg:p-16 backdrop-blur-xl border border-purple-500/20 shadow-2xl overflow-hidden"
+        className={`relative ${
+          isDarkMode
+            ? "bg-gradient-to-br from-gray-900/90 to-[#0A0A0C]/90 text-gray-900"
+            : "bg-white text-white"
+        } 
+           rounded-2xl lg:rounded-3xl p-8 md:p-12 lg:p-16 backdrop-blur-xl border
+            border-purple-500/20 shadow-2xl overflow-hidden`}
         animate={{
           boxShadow: isHovered
             ? "0 25px 50px -12px rgba(147, 51, 234, 0.5), 0 0 0 1px rgba(147, 51, 234, 0.3)"
@@ -67,7 +90,7 @@ const AboutCard = ({ name, title, description, location, availability, imageUrl 
       >
         {/* Glow Effect */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        
+
         {/* Animated Background Particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[...Array(15)].map((_, i) => (
@@ -113,7 +136,7 @@ const AboutCard = ({ name, title, description, location, availability, imageUrl 
                 }}
                 transition={{ duration: 0.3 }}
               />
-              
+
               {/* Image container */}
               <div className="relative w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden shadow-2xl">
                 {imageUrl ? (
@@ -155,7 +178,9 @@ const AboutCard = ({ name, title, description, location, availability, imageUrl 
             }}
           >
             <motion.h3
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6"
+              className={`text-3xl md:text-4xl lg:text-5xl font-bold  mb-4 md:mb-6 ${
+                isDarkMode ? "text-white" : "text-black"
+              }`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
@@ -164,7 +189,9 @@ const AboutCard = ({ name, title, description, location, availability, imageUrl 
             </motion.h3>
 
             <motion.p
-              className="text-gray-300 text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8"
+              className={` text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 ${
+                isDarkMode ? "text-gray-300" : "text-gray-600"
+              }`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}

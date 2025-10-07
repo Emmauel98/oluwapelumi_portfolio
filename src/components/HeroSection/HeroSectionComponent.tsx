@@ -10,11 +10,31 @@ interface SocialIconsProps {
 }
 
 const socials = [
-  { src: "/github.svg", label: "GitHub", href: "https://github.com/" },
-  { src: "/linkedin.svg", label: "LinkedIn", href: "https://linkedin.com/" },
-  { src: "/twitter.svg", label: "Twitter", href: "https://twitter.com/" },
-  { src: "/youtube.svg", label: "YouTube", href: "https://youtube.com/" },
-  { src: "/instagram.svg", label: "Instagram", href: "https://instagram.com/" },
+  {
+    src: "/github.svg",
+    label: "GitHub",
+    href: "https://github.com/Emmauel98/",
+  },
+  {
+    src: "/linkedin.svg",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/oluwapelumi-olamilekan-289a92222?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+  },
+  {
+    src: "/twitter.svg",
+    label: "Twitter",
+    href: "https://x.com/olami_js?s=21",
+  },
+  {
+    src: "/youtube.svg",
+    label: "YouTube",
+    href: "https://youtube.com/@salaudeenoluwapelumi6092?si=IPNVlEN-OU4l1lHx",
+  },
+  {
+    src: "/instagram.svg",
+    label: "Instagram",
+    href: "https://www.instagram.com/olami_js?igsh=Z2VkZnZvOWM2bmd4&utm_source=qr",
+  },
 ];
 
 const HeroSectionComponent: React.FC = () => {
@@ -161,6 +181,12 @@ const HeroSectionComponent: React.FC = () => {
                   boxShadow: "0 20px 40px rgba(139, 92, 246, 0.4)",
                 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const nextSection = document.getElementById("contact");
+                  if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 Get In Touch
               </motion.button>
@@ -176,6 +202,12 @@ const HeroSectionComponent: React.FC = () => {
                   borderColor: isDarkMode ? "#fff" : "#000",
                 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const nextSection = document.getElementById("projects");
+                  if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 View Projects
               </motion.button>
@@ -223,14 +255,26 @@ const HeroSectionComponent: React.FC = () => {
       </motion.div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      {/* Scroll Indicator */}
+      <motion.button
+        onClick={() => {
+          const nextSection = document.getElementById("about");
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
+        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer ${
+          isDarkMode ? "bg-blue-300/50" : "bg-slate-400/50"
+        }
+            p-2 rounded-full`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 10, 0] }}
         transition={{
           opacity: { delay: 1, duration: 0.6 },
           y: { duration: 2, repeat: Infinity },
         }}
+        whileHover={{ scale: 1.2 }}
+        aria-label="Scroll down to next section"
       >
         <svg
           className={`w-6 h-6 transition-colors ${
@@ -247,7 +291,7 @@ const HeroSectionComponent: React.FC = () => {
             d="M19 14l-7 7m0 0l-7-7m7 7V3"
           />
         </svg>
-      </motion.div>
+      </motion.button>
     </section>
   );
 };
