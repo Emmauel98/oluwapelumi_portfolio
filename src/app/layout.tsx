@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     "Software Engineer Portfolio",
   ],
   openGraph: {
-    title: "Oluwapelumi Olamilekan | Frontend, Mobile & AI Engineer",
+    title: "Oluwapelumi Olamilekan | Software & AI Engineer",
     description:
-      "Building modern, interactive web and mobile solutions that solve real-world problems.",
+      "Building intelligent, scalable, and user-centered digital solutions.",
     url: "https://yourdomain.com",
     siteName: "Oluwapelumi Olamilekan Portfolio",
     images: [
