@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
 
-// Skill data type
 interface Skill {
   id: string;
   title: string;
@@ -14,7 +13,6 @@ interface Skill {
   gradient: string;
 }
 
-// Skills data
 const skills: Skill[] = [
   {
     id: "web-dev",
@@ -53,7 +51,6 @@ const skills: Skill[] = [
   },
 ];
 
-// Individual Skill Card Component
 const SkillCard: React.FC<{ skill: Skill; index: number }> = ({
   skill,
   index,
@@ -74,8 +71,7 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({
       <motion.div
         whileHover={{ scale: 1.02, y: -5 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className={`
-          relative overflow-hidden rounded-2xl p-6 md:p-8 lg:p-4
+        className={`relative overflow-hidden rounded-2xl p-6 md:p-8 lg:p-4
           bg-gradient-to-br ${
             isHovered
               ? skill.gradient
@@ -84,12 +80,8 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({
               : "bg-white"
           }
           border border-gray-700 hover:border-gray-600
-          transition-all duration-300
-          cursor-pointer
-          h-full
-        `}
+          transition-all duration-300 cursor-pointer h-full`}
       >
-        {/* Background glow effect */}
         <motion.div
           animate={{
             opacity: isHovered ? 0.2 : 0,
@@ -99,38 +91,28 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({
           className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} blur-xl`}
         />
 
-        {/* Content */}
         <div className="relative z-10">
-          {/* Icon */}
           <motion.div
             animate={{
               rotate: isHovered ? 360 : 0,
               scale: isHovered ? 1.1 : 1,
             }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className={`
-              w-14 h-14 md:w-16 md:h-16 lg:h-12 lg:w-12
-              rounded-xl md:rounded-2xl
-              ${isHovered ? "bg-white/20" : skill.color}
-              flex items-center justify-center
-              text-2xl md:text-3xl
-              mb-4 md:mb-6
-              shadow-lg
-            `}
+            className={`w-14 h-14 md:w-16 md:h-16 lg:h-12 lg:w-12 rounded-xl md:rounded-2xl ${
+              isHovered ? "bg-white/20" : skill.color
+            } flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 shadow-lg`}
           >
             {skill.icon}
           </motion.div>
 
-          {/* Title */}
           <h3
-            className={`text-xl md:text-2xl font-bold  mb-3 md:mb-4 ${
+            className={`text-xl md:text-2xl font-bold mb-3 md:mb-4 ${
               isDarkMode ? "text-white" : "text-black"
             }`}
           >
             {skill.title}
           </h3>
 
-          {/* Description */}
           <p
             className={`text-sm md:text-base leading-relaxed font-medium ${
               isDarkMode ? "text-gray-300" : "text-black"
@@ -139,7 +121,6 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({
             {skill.description}
           </p>
 
-          {/* Animated underline */}
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: isHovered ? "100%" : "0%" }}
@@ -148,7 +129,6 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({
           />
         </div>
 
-        {/* Corner accent */}
         <motion.div
           animate={{
             opacity: isHovered ? 1 : 0,
@@ -162,9 +142,19 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({
   );
 };
 
-// Main Skills Section Component
 const NicheSection: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const [positions, setPositions] = useState<{ x: number; y: number }[]>([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const randomPositions = Array.from({ length: 20 }).map(() => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+      }));
+      setPositions(randomPositions);
+    }
+  }, []);
 
   return (
     <section
@@ -174,27 +164,21 @@ const NicheSection: React.FC = () => {
       aria-label="Skills and Expertise"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Skills Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {skills.map((skill, index) => (
             <SkillCard key={skill.id} skill={skill} index={index} />
           ))}
         </div>
 
+        {/* Safe animated dots */}
         <div className="fixed inset-0 pointer-events-none -z-10">
-          {[...Array(20)].map((_, i) => (
+          {positions.map((pos, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-blue-500/20 rounded-full"
               animate={{
-                x: [
-                  Math.random() * window.innerWidth,
-                  Math.random() * window.innerWidth,
-                ],
-                y: [
-                  Math.random() * window.innerHeight,
-                  Math.random() * window.innerHeight,
-                ],
+                x: [pos.x, Math.random() * window.innerWidth],
+                y: [pos.y, Math.random() * window.innerHeight],
                 opacity: [0, 1, 0],
               }}
               transition={{
