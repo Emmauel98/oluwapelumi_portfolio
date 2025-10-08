@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import { motion, easeInOut  } from "framer-motion";
 import AboutCard from "./AboutCard";
 import { useTheme } from "@/components/ThemeProvider";
 
@@ -46,7 +46,10 @@ export default function AboutSection() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: { 
+        duration: 0.8, 
+        ease: easeInOut,
+       },
     },
   };
 
