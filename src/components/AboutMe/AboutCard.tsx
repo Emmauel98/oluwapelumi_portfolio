@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
 
-// Types
 interface AboutCardProps {
   name: string;
   title: string;
@@ -14,7 +13,6 @@ interface AboutCardProps {
   imageUrl?: string;
 }
 
-// About Card Component
 const AboutCard = ({
   name,
   title,
@@ -28,7 +26,6 @@ const AboutCard = ({
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-
   const mouseXSpring = useSpring(x, { stiffness: 100, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 100, damping: 20 });
 
@@ -66,47 +63,49 @@ const AboutCard = ({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       className="relative w-full max-w-5xl mx-auto perspective-1000"
     >
       <motion.article
-        className={`relative ${
-          isDarkMode
-            ? "bg-gradient-to-br from-gray-900/90 to-[#0A0A0C]/90 text-gray-900"
-            : "bg-white text-white"
-        } 
-           rounded-2xl lg:rounded-3xl p-8 md:p-12 lg:p-16 backdrop-blur-xl border
-            border-purple-500/20 shadow-2xl overflow-hidden`}
+        className={`relative rounded-2xl lg:rounded-3xl p-8 md:p-12 lg:p-16 backdrop-blur-xl border shadow-2xl overflow-hidden
+          ${
+            isDarkMode
+              ? "bg-gradient-to-br from-[#0B0B0C] via-[#111] to-[#1A1A1C] border-neutral-700/40"
+              : "bg-gradient-to-br from-[#FAFAFA] via-[#F5F5F5] to-[#EAEAEA] border-neutral-300/50"
+          }`}
         animate={{
           boxShadow: isHovered
-            ? "0 25px 50px -12px rgba(147, 51, 234, 0.5), 0 0 0 1px rgba(147, 51, 234, 0.3)"
-            : "0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(147, 51, 234, 0.1)",
+            ? "0 25px 50px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(180, 180, 180, 0.3)"
+            : "0 20px 25px -5px rgba(0,0,0,0.4), 0 0 0 1px rgba(180, 180, 180, 0.1)",
         }}
         transition={{ duration: 0.3 }}
       >
-        {/* Glow Effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        {/* Subtle Glow Layer */}
+        <motion.div
+          className={`absolute inset-0 ${
+            isDarkMode
+              ? "bg-gradient-to-tr from-amber-100/5 via-transparent to-zinc-100/5"
+              : "bg-gradient-to-tr from-zinc-200/40 via-transparent to-amber-100/40"
+          } opacity-0`}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.4 }}
+        />
 
-        {/* Animated Background Particles */}
+        {/* Minimal Ambient Particles (soft silver shimmer) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(15)].map((_, i) => (
+          {[...Array(12)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-purple-400/30 rounded-full"
+              className={`absolute w-1 h-1 rounded-full ${
+                isDarkMode ? "bg-neutral-400/20" : "bg-neutral-500/15"
+              }`}
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.6, 0.3],
-              }}
+              animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.7, 0.3] }}
               transition={{
-                duration: 2 + Math.random() * 2,
+                duration: 3 + Math.random() * 2,
                 repeat: Infinity,
                 delay: Math.random() * 2,
               }}
@@ -114,31 +113,27 @@ const AboutCard = ({
           ))}
         </div>
 
+        {/* Main Content */}
         <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
           {/* Profile Image */}
           <motion.div
             className="flex-shrink-0"
-            animate={{
-              scale: isHovered ? 1.05 : 1,
-            }}
+            animate={{ scale: isHovered ? 1.05 : 1 }}
             transition={{ duration: 0.3 }}
-            style={{
-              transform: "translateZ(50px)",
-            }}
+            style={{ transform: "translateZ(50px)" }}
           >
             <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48">
-              {/* Glow ring */}
+              {/* Elegant Glow Ring */}
               <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 blur-xl opacity-50"
+                className="absolute inset-0 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B9B9B9] blur-2xl opacity-40"
                 animate={{
                   scale: isHovered ? 1.2 : 1,
-                  opacity: isHovered ? 0.7 : 0.5,
+                  opacity: isHovered ? 0.6 : 0.4,
                 }}
                 transition={{ duration: 0.3 }}
               />
-
-              {/* Image container */}
-              <div className="relative w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden shadow-2xl">
+              {/* Image */}
+              <div className="relative w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden shadow-2xl border border-neutral-400/30">
                 {imageUrl ? (
                   <img
                     src={imageUrl}
@@ -147,7 +142,7 @@ const AboutCard = ({
                   />
                 ) : (
                   <svg
-                    className="w-20 h-20 md:w-24 md:h-24 text-gray-900"
+                    className="w-20 h-20 md:w-24 md:h-24 text-neutral-400"
                     viewBox="0 0 100 100"
                     fill="currentColor"
                   >
@@ -170,16 +165,16 @@ const AboutCard = ({
             </div>
           </motion.div>
 
-          {/* Content */}
+          {/* Text Content */}
           <motion.div
             className="flex-1 text-center md:text-left"
-            style={{
-              transform: "translateZ(30px)",
-            }}
+            style={{ transform: "translateZ(30px)" }}
           >
             <motion.h3
-              className={`text-3xl md:text-4xl lg:text-5xl font-bold  mb-4 md:mb-6 ${
-                isDarkMode ? "text-white" : "text-black"
+              className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 ${
+                isDarkMode
+                  ? "text-white"
+                  : "bg-gradient-to-r from-[#222] to-[#555] bg-clip-text text-transparent"
               }`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -189,8 +184,8 @@ const AboutCard = ({
             </motion.h3>
 
             <motion.p
-              className={` text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 ${
-                isDarkMode ? "text-gray-300" : "text-gray-600"
+              className={`text-base md:text-lg lg:text-xl leading-relaxed mb-6 md:mb-8 ${
+                isDarkMode ? "text-neutral-300" : "text-neutral-700"
               }`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -199,18 +194,21 @@ const AboutCard = ({
               {description}
             </motion.p>
 
-            {/* Tags */}
             <motion.div
               className="flex flex-wrap items-center justify-center md:justify-start gap-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <span className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/50 text-purple-300 text-sm font-medium backdrop-blur-sm">
+              <span
+                className={`px-4 py-2 rounded-full bg-neutral-800/20 border border-neutral-500/40  text-sm font-medium backdrop-blur-sm ${
+                  isDarkMode ? "text-neutral-300" : "text-neutral-900"
+                }`}
+              >
                 📍 {location}
               </span>
-              <span className="px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/50 text-blue-300 text-sm font-medium backdrop-blur-sm flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <span className="px-4 py-2 rounded-full bg-amber-200/10 border border-amber-400/30 text-amber-300 text-sm font-medium backdrop-blur-sm flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 {availability}
               </span>
             </motion.div>

@@ -37,20 +37,41 @@ const GetInTouch = () => {
   return (
     <section
       className={`min-h-screen ${
-        isDarkMode ? "bg-black" : "bg-white"
+        isDarkMode
+          ? "bg-gradient-to-br from-[#0A0A0C] via-[#000000] to-[#1A1A1A]"
+          : "bg-gradient-to-br from-[#F0F9FF] via-[#F3E8FF] to-[#FEF2F2]"
       } flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden`}
       id="contact"
     >
       {/* Animated background elements */}
+      {/* Soft background glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+        <div
+          className={`absolute top-1/3 left-1/3 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-40 animate-pulse ${
+            isDarkMode
+              ? "bg-gradient-to-r from-[#D4AF37]/30 to-[#E2C275]/20"
+              : "bg-gradient-to-r from-[#93C5FD]/40 to-[#E9D5FF]/30"
+          }`}
+        ></div>
+        <div
+          className={`absolute bottom-1/4 right-1/4 w-[25rem] h-[25rem] rounded-full blur-3xl opacity-30 animate-pulse delay-700 ${
+            isDarkMode
+              ? "bg-gradient-to-r from-[#E2C275]/20 to-[#D4AF37]/20"
+              : "bg-gradient-to-r from-[#F9A8D4]/30 to-[#A5B4FC]/30"
+          }`}
+        ></div>
       </div>
 
       <div className="w-full max-w-7xl relative z-10">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16 animate-fadeIn">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient">
+          <h1
+            className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 animate-gradient ${
+              isDarkMode
+                ? "bg-gradient-to-r from-[#D4AF37] to-[#E2C275] text-transparent bg-clip-text"
+                : "bg-gradient-to-r from-[#0EA5E9] via-[#7C3AED] to-[#EC4899] text-transparent bg-clip-text"
+            }`}
+          >
             Get In Touch
           </h1>
           <p
@@ -69,7 +90,7 @@ const GetInTouch = () => {
 
           <div
             className="absolute w-[20rem] h-[20rem] rounded-full bg-gradient-to-r animate-pulse
-           from-blue-600 to-purple-600 hover:from-blue-500 blur-3xl top-0 left-[20rem]"
+           from-[#D4AF37] to-[#E2C275] hover:from-[#E2C275] blur-3xl top-0 left-[20rem]"
           ></div>
           <motion.div
             initial={{ opacity: 0, scale: 0.2 }}
@@ -81,17 +102,19 @@ const GetInTouch = () => {
               ease: "easeInOut",
             }}
             className="absolute w-[20rem] h-[20rem] rounded-full bg-gradient-to-r
-           from-blue-600 to-purple-600 hover:from-blue-500 blur-3xl top-0 right-0"
+           from-[#D4AF37] to-[#E2C275] hover:from-[#E2C275] blur-3xl top-0 right-0"
           ></motion.div>
 
           {/* Contact Form */}
           <div className="w-full animate-slideInLeft">
             <div
               className={` ${
-                isDarkMode ? "bg-[#0A0A0C]" : "bg-white"
+                isDarkMode
+                  ? "bg-gradient-to-br from-[#111]/80 via-[#1A1A1A]/70 to-[#0F0F0F]/80 border-[#D4AF37]/20"
+                  : "bg-gradient-to-br from-[#FFFFFF]/80 via-[#F3E8FF]/70 to-[#E0F2FE]/70 border-[#E0E7FF]/50"
               } bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 
             rounded-2xl p-6 sm:p-8 border border-slate-800/50  hover:border-slate-700/50 transition-all
-            duration-300 shadow-[0px_0px_50px_12px_rgba(147,51,234,0.5),_0_0_0_1px_rgba(147,51,234,0.3)]`}
+            duration-300 `}
             >
               <div className="space-y-6" onSubmit={handleSubmit}>
                 {/* Name Field */}
@@ -179,7 +202,11 @@ const GetInTouch = () => {
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                   disabled={isSubmitted}
-                  className="w-full py-3 px-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-blue-500/50"
+                  className={`w-full py-3 px-6 ${
+                    isDarkMode
+                      ? "bg-gradient-to-r from-[#D4AF37] to-[#E2C275] hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]"
+                      : "bg-gradient-to-r from-[#0EA5E9] to-[#7C3AED] hover:shadow-[0_0_25px_rgba(124,58,237,0.3)]"
+                  } text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-blue-500/50`}
                 >
                   {isSubmitted ? (
                     <>
@@ -206,11 +233,17 @@ const GetInTouch = () => {
             {/* Email Card */}
             <div
               className={` ${
-                isDarkMode ? "bg-[#0A0A0C]/50" : "bg-white/50"
+                isDarkMode
+                  ? "bg-gradient-to-br from-[#111]/80 to-[#1A1A1A]/80 border-[#D4AF37]/20"
+                  : "bg-gradient-to-br from-[#FFFFFF]/80 to-[#E0F2FE]/80 border-[#E0E7FF]/50"
               } backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-800/50 shadow-2xl hover:border-slate-700/50 transition-all duration-300 hover:transform hover:scale-105`}
             >
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className={`w-14 h-14 ${
+                    isDarkMode
+                      ? "bg-gradient-to-br from-[#D4AF37] to-[#E2C275]"
+                      : "bg-gradient-to-br from-[#0EA5E9] to-[#7C3AED]"
+                  } rounded-xl flex items-center justify-center flex-shrink-0`}>
                   <Mail className={`w-7 h-7  text-white`} />
                 </div>
                 <div>
