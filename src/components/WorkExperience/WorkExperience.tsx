@@ -26,6 +26,9 @@ export const metadata = {
   },
 };
 
+interface Achievement {
+  text: string;
+}
 
 interface Achievement {
   text: string;
@@ -45,129 +48,144 @@ interface Experience {
 const experiences: Experience[] = [
   {
     id: "1",
-    title: "Frontend Team Lead",
-    company: "GDSC OAU",
-    duration: "2025 - Aug 2025",
+    title: "Software & AI Engineer",
+    company: "AI Builder (Contract)",
+    duration: "05/2025 - 07/2025",
     description:
-      "Led the frontend team and organized developer workshops. Mentored junior developers and established coding standards.",
+      "A remote startup specializing in AI solutions for data processing and intelligent automation.",
     achievements: [
-      { text: "Led a team of 8 frontend developers" },
-      { text: "Organized 12+ technical workshops" },
-      { text: "Improved code quality by 40%" },
+      {
+        text: "Developed and integrated AI-powered data processing systems for efficient data organization.",
+      },
+      {
+        text: "Built a Retrieval-Augmented Generation (RAG) system for intelligent document search functionalities.",
+      },
     ],
     icon: "💻",
     iconBg: "from-blue-500 to-purple-600",
   },
   {
     id: "2",
-    title: "Mobile Developer",
-    company: "LoadWay",
-    duration: "March 2024 - May 2024",
+    title: "Fullstack Engineer",
+    company: "Edge Capital (Contract)",
+    duration: "03/2025 - 05/2025",
     description:
-      "Contributed to a Real Estate fintech banking app (Loadway) with focus on security and user experience.",
+      "A contract-based fintech firm specializing in corporate web and financial solutions.",
     achievements: [
-      { text: "Developed secure payment system" },
-      { text: "Implemented biometric authentication" },
-      { text: "Achieved 4.8+ app store rating" },
+      {
+        text: "Developed and deployed a bilingual corporate website supporting English and Dutch.",
+      },
+      {
+        text: "Implemented dynamic language translation and optimized SEO performance.",
+      },
+      {
+        text: "Improved site load speed by 35% through frontend performance enhancements.",
+      },
+    ],
+    icon: "🧩",
+    iconBg: "from-cyan-500 to-blue-600",
+  },
+  {
+    id: "3",
+    title: "Mobile Developer",
+    company: "Concavo",
+    duration: "09/2024 – 11/2024",
+    description:
+      "A remote fintech startup focused on mobile banking and digital financial services.",
+    achievements: [
+      {
+        text: "Led the development of a fintech mobile banking app with over 20 screens.",
+      },
+      {
+        text: "Ensured seamless navigation flow and responsive UI across devices.",
+      },
+      {
+        text: "Collaborated with UI/UX teams to ensure secure and user-friendly experiences.",
+      },
     ],
     icon: "📱",
     iconBg: "from-purple-500 to-pink-600",
   },
   {
-    id: "3",
-    title: "Core Mobile Developer",
-    company: "Concavo",
-    duration: "Sept 2024",
+    id: "4",
+    title: "Mobile Developer",
+    company: "LoadWay",
+    duration: "2024",
     description:
-      "Developed 45+ screens for a fintech platform with complete state management and API integrations.",
+      "A remote fintech startup building Real Estate-focused mobile applications.",
     achievements: [
-      { text: "Built 45+ production-ready screens" },
-      { text: "Integrated APIs and managed complex navigation flows" },
-      { text: "Implemented responsive layouts with React Native" },
+      {
+        text: "Developed and maintained a Real Estate fintech mobile app.",
+      },
+      {
+        text: "Implemented context API for efficient state management and data flow.",
+      },
+      {
+        text: "Collaborated with mobile developers to ensure secure and intuitive user experiences.",
+      },
     ],
-    icon: "🚀",
-    iconBg: "from-cyan-500 to-blue-600",
+    icon: "📱",
+    iconBg: "from-indigo-500 to-blue-600",
   },
   {
-    id: "4",
+    id: "5",
     title: "Frontend Engineer",
     company: "CLM Worldwide",
-    duration: "Sep 2023 – Jan 2024",
+    duration: "2024",
     description:
-      "Developed a modern frontend UI using React.js and Tailwind CSS, integrating APIs via Swagger and collaborating with designers to enhance UX.",
+      "A digital solutions company providing web and software development services.",
     achievements: [
-      { text: "Built responsive, accessible interfaces with React.js" },
-      { text: "Integrated backend APIs using Swagger" },
-      { text: "Improved UI consistency and user satisfaction" },
+      {
+        text: "Built a modern, responsive frontend interface using React.js and Tailwind CSS.",
+      },
+      { text: "Integrated APIs via Swagger and enhanced data consistency." },
+      { text: "Improved site load speed by 25% and optimized performance." },
     ],
     icon: "🌐",
     iconBg: "from-green-500 to-teal-600",
   },
   {
-    id: "5",
+    id: "6",
     title: "Fullstack Developer",
     company: "Client Project (Remote)",
-    duration: "Aug 2023 – Nov 2023",
+    duration: "08/2023 – 11/2023",
     description:
-      "Built a full-stack church management platform using React.js, Node.js, and MongoDB with secure RESTful APIs.",
+      "A freelance church management platform for a growing digital congregation.",
     achievements: [
-      { text: "Developed full CRUD operations and authentication flow" },
-      { text: "Designed scalable REST APIs using Express.js" },
-      { text: "Deployed app with production-ready configurations" },
+      {
+        text: "Developed a full-stack web application using React.js, Node.js, and MongoDB.",
+      },
+      {
+        text: "Implemented authentication, secure REST APIs, and email notifications with Nodemailer.",
+      },
+      {
+        text: "Deployed production-ready configurations for scalability and performance.",
+      },
     ],
-    icon: "🧩",
+    icon: "🧠",
     iconBg: "from-yellow-500 to-orange-600",
-  },
-  {
-    id: "6",
-    title: "Frontend Instructor",
-    company: "Virtual Learning Hub",
-    duration: "Sep 2022 – Aug 2023",
-    description:
-      "Trained over 100 students in frontend development with project-based learning and mentorship.",
-    achievements: [
-      { text: "Taught HTML, CSS, JavaScript, and React fundamentals" },
-      { text: "Supervised 30+ student projects" },
-      { text: "Increased course completion rate by 25%" },
-    ],
-    icon: "🎓",
-    iconBg: "from-indigo-500 to-blue-700",
   },
   {
     id: "7",
-    title: "Technical Consultant",
-    company: "Arteries Communication",
-    duration: "Nov 2023",
+    title: "Frontend Instructor",
+    company: "Virtual Learning Hub",
+    duration: "09/2022 – 10/2022",
     description:
-      "Provided expert consulting on website enhancements, API testing, and deployment best practices.",
+      "An online platform providing project-based learning in web development and digital skills.",
     achievements: [
+      { text: "Taught and mentored students in HTML, CSS, and JavaScript." },
       {
-        text: "Provided expert guidance on website enhancements, API testing, and deployment best practices.",
+        text: "Developed project-based learning paths that improved completion rates by 40%.",
       },
-      { text: "Built a SME website for Arteries Communcication" },
-      { text: "Helped ensure the Growth of Arteries Comms" },
-    ],
-    icon: "🧠",
-    iconBg: "from-gray-500 to-gray-700",
-  },
-  {
-    id: "8",
-    title: "AI Instructor",
-    company: "Independent / Training Program",
-    duration: "Aug 2025 – Oct 2025",
-    description:
-      "Taught students the fundamentals and practical applications of Generative AI, helping them progress from beginner to intermediate level through hands-on projects and real-world examples.",
-    achievements: [
-      { text: "Delivered interactive Generative AI workshops" },
-      { text: "Guided 30+ students from beginner to intermediate proficiency" },
       {
-        text: "Covered topics including LLMs, Prompt Engineering, and AI tools",
+        text: "Guided students through practical assignments and portfolio projects.",
       },
     ],
-    icon: "🧠",
-    iconBg: "from-yellow-500 to-orange-600",
+    icon: "🎓",
+    iconBg: "from-pink-500 to-purple-600",
   },
 ];
+
 const WorkExperience: React.FC = () => {
   const [showDownloadModal, setShowDownloadModal] = useState(false);
   const { isDarkMode } = useTheme();
@@ -175,10 +193,22 @@ const WorkExperience: React.FC = () => {
   return (
     <section
       className={`${
-        isDarkMode ? "bg-black" : "bg-white"
+        isDarkMode
+          ? "bg-gradient-to-br from-[#0A0A0A] via-[#111] to-[#1A1A1A]"
+          : "bg-gradient-to-br from-[#F8FAFC] via-[#EEF2FF] to-[#FAF5FF]"
       } bg-black py-16 px-4 sm:px-6 lg:px-8`}
       id="experience"
     >
+      {/* Subtle background glow */}
+      <div
+        className={`absolute inset-0 opacity-40 blur-[100px] pointer-events-none transition-all duration-700
+          ${
+            isDarkMode
+              ? "bg-gradient-to-br from-[#D4AF37]/20 via-[#E2C275]/10 to-transparent"
+              : "bg-gradient-to-br from-[#A5F3FC]/40 via-[#C7D2FE]/30 to-[#FBCFE8]/30"
+          }`}
+      />
+
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
@@ -188,8 +218,11 @@ const WorkExperience: React.FC = () => {
           className="text-center mb-16"
         >
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-500
-           to-purple-600 bg-clip-text text-transparent"
+            className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 ${
+              isDarkMode
+                ? "text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#E2C275]"
+                : "text-gray-900"
+            }`}
           >
             Work Experience
           </h1>
@@ -218,7 +251,7 @@ const WorkExperience: React.FC = () => {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="relative sm:pl-24"
+                className={`relative sm:pl-24 `}
               >
                 {/* Bulletin  */}
                 <div className="absolute left-[1.7rem]  top-0 md:block hidden">
@@ -229,10 +262,12 @@ const WorkExperience: React.FC = () => {
                 </div>
                 {/* Content Card */}
                 <div
-                  className={`${
-                    isDarkMode ? "bg-zinc-900/50" : "bg-slate-50"
-                  } backdrop-blur-sm border 
-                border-zinc-800/50 rounded-2xl p-6 sm:p-8 hover:border-purple-500/50 transition-all
+                  className={` backdrop-blur-sm border  ${
+                    isDarkMode
+                      ? "bg-[#111]/60 border border-[#2A2A2A] hover:border-[#D4AF37]/40"
+                      : "bg-white/60 border border-gray-200 hover:border-[#0E7490]/30"
+                  }
+               rounded-2xl p-6 sm:p-8  transition-all
                  duration-300 group`}
                 >
                   {/* Icon + Header div */}
@@ -257,7 +292,8 @@ const WorkExperience: React.FC = () => {
                         <h2
                           className={`${
                             isDarkMode ? "text-white" : "text-black"
-                          }  font-bold text-xl sm:text-2xl mb-1 group-hover:text-purple-400 transition-colors`}
+                          }  font-bold text-xl sm:text-2xl mb-1 transition-colors group-hover:text-transparent group-hover:bg-clip-text
+                           group-hover:bg-gradient-to-r from-[#D4AF37] to-[#E2C275]`}
                         >
                           {exp.title}
                         </h2>
@@ -353,21 +389,29 @@ const WorkExperience: React.FC = () => {
           >
             <h3
               className={` ${
-                isDarkMode ? "text-white" : "text-black"
+                isDarkMode
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#E2C275]"
+                  : "text-gray-900"
               } font-bold text-2xl sm:text-3xl mb-3`}
             >
               Want to know more?
             </h3>
             <p
-              className={` ${isDarkMode ? "text-gray-400" : "text-black"} mb-6`}
+              className={` ${
+                isDarkMode ? "text-gray-400" : "text-gray-700"
+              } mb-6`}
             >
               Download my full resume for detailed information
             </p>
             <button
               onClick={() => setShowDownloadModal(true)}
-              className="px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-500 text-white
-               rounded-xl font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 
-               inline-flex items-center gap-2 hover:cursor-pointer"
+              className={`px-8 py-3  text-white
+               rounded-xl font-medium  transition-all duration-300 
+               inline-flex items-center gap-2 hover:cursor-pointer ${
+                 isDarkMode
+                   ? "bg-gradient-to-r from-[#D4AF37] to-[#E2C275] hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]"
+                   : "bg-gradient-to-r from-[#D4AF37] to-[#E2C275] hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]"
+               }`}
             >
               <svg
                 className="w-5 h-5"
@@ -408,7 +452,8 @@ const WorkExperience: React.FC = () => {
               Download Resume
             </h3>
             <p className="text-gray-400 mb-6">
-              My Resume would be downloaded on your chrome. Click demo to continue.
+              My Resume would be downloaded on your chrome. Click demo to
+              continue.
             </p>
             <div className="flex gap-3">
               <button

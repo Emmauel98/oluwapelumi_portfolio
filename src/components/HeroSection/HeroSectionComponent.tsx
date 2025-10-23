@@ -91,7 +91,10 @@ const HeroSectionComponent: React.FC = () => {
   } as const;
 
   return (
-    <section className="relative z-10 flex flex-col items-center justify-center px-6 py-20 lg:py-32 min-h-[calc(100vh-88px)]">
+    <section
+      className="relative z-10 flex flex-col items-center justify-center 
+    px-6 py-20 lg:py-32 min-h-[calc(100vh-88px)]"
+    >
       <motion.div
         className="text-center max-w-5xl"
         variants={containerVariants}
@@ -120,20 +123,25 @@ const HeroSectionComponent: React.FC = () => {
                 {/* Main Heading */}
                 <motion.h1
                   variants={itemVariants}
-                  className="text-3xl sm:text-3xl md:text-3xl lg:text-5xl xl:text-7xl font-bold 
-                  mb-6 lg:mb-8 md:flex md:gap-5 bg-gradient-to-r from-purple-400 via-blue-400
-                   to-cyan-400 text-transparent bg-clip-text text-center"
+                  className={`text-3xl sm:text-3xl md:text-3xl lg:text-5xl xl:text-7xl font-bold 
+                  mb-6 lg:mb-8 md:flex md:gap-5 text-center ${
+                    isDarkMode
+                      ? "text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#E2C275]"
+                      : "text-gray-900"
+                  }`}
                 >
                   <span className="block md:flex mb-2 md:mb-0">
                     Hi, I&apos;m{" "}
                   </span>
-                  <span className="">Oluwapelumi</span>
+                  <span className="text-[#0E7490]">Oluwapelumi</span>
                 </motion.h1>
 
                 {/* Subtitle */}
                 <motion.h2
                   variants={itemVariants}
-                  className="text-2xl sm:text-3xl md:text-3xl lg:text-5xl font-bold mb-2 lg:mb-3"
+                  className={`text-2xl sm:text-3xl md:text-3xl lg:text-5xl font-bold mb-2 lg:mb-3 ${
+                    isDarkMode ? "text-gray-200" : "text-gray-800"
+                  }`}
                 >
                   Software & AI Engineer
                 </motion.h2>
@@ -175,10 +183,11 @@ const HeroSectionComponent: React.FC = () => {
               className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 lg:mb-16"
             >
               <motion.button
-                className="w-full sm:w-auto px-8 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold shadow-lg shadow-purple-500/50"
+                className="w-full sm:w-auto px-8 py-2 rounded-lg  text-white font-semibold  bg-[#D4AF37] hover:bg-[#C9A032] transition-all duration-300
+              shadow-[0_4px_20px_rgba(212,175,55,0.3)]"
                 whileHover={{
                   scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(139, 92, 246, 0.4)",
+                  // boxShadow: "0 20px 40px rgba(139, 92, 246, 0.4)",
                 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
@@ -194,8 +203,8 @@ const HeroSectionComponent: React.FC = () => {
               <motion.button
                 className={`w-full sm:w-auto px-8 py-2 rounded-lg border font-semibold transition-colors ${
                   isDarkMode
-                    ? "border-gray-600 text-white hover:bg-gray-800"
-                    : "border-gray-300 text-gray-900 hover:bg-gray-100"
+                    ? "border-gray-600 text-gray-200 hover:border-[#D4AF37]"
+                    : "border-gray-400 text-gray-900 hover:border-[#0E7490]"
                 }`}
                 whileHover={{
                   scale: 1.05,
@@ -244,7 +253,9 @@ const HeroSectionComponent: React.FC = () => {
                     width={28}
                     height={28}
                     className={`object-contain ${
-                      isDarkMode ? "invert brightness-90" : ""
+                      isDarkMode
+                        ? "invert brightness-90 hover:brightness-125"
+                        : "hover:opacity-70"
                     }`}
                   />
                 </motion.a>
@@ -263,8 +274,8 @@ const HeroSectionComponent: React.FC = () => {
             nextSection.scrollIntoView({ behavior: "smooth" });
           }
         }}
-        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer ${
-          isDarkMode ? "bg-blue-300/50" : "bg-slate-400/50"
+        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer  ${
+          isDarkMode ? "bg-[#D4AF37]/20" : "bg-[#0E7490]/10"
         }
             p-2 rounded-full`}
         initial={{ opacity: 0 }}
@@ -278,7 +289,7 @@ const HeroSectionComponent: React.FC = () => {
       >
         <svg
           className={`w-6 h-6 transition-colors ${
-            isDarkMode ? "text-gray-400" : "text-gray-600"
+            isDarkMode ? "text-[#D4AF37]" : "text-[#0E7490]"
           }`}
           fill="none"
           viewBox="0 0 24 24"
