@@ -168,9 +168,7 @@ const Footer = () => {
               isDarkMode ? "text-slate-500" : "text-slate-600"
             }`}
           >
-            © 2025 Oluwapelumi Olamilekan — Built with{" "}
-            <Heart className="inline w-4 h-4 text-red-500 animate-pulse fill-current" />{" "}
-            and React + Next.js.
+            © 2025 Oluwapelumi Olamilekan
           </p>
         </div>
       </div>
